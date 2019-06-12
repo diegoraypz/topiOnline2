@@ -24,6 +24,7 @@ router.post('/add', async (req, res) => {
     }; //más adelante lo podría relacionar con el admin que lo creó¿?
     newProduct.foto = './uploads/'+ req.file.filename;
     await pool.query('INSERT INTO products set ?', [newProduct]);
+    req.flash('success','Producto agregado');
     res.redirect('/products');
 });
 

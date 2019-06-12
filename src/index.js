@@ -4,6 +4,12 @@ const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const multer = require('multer');
+const passport = require('passport');
+const flash = require('connect-flash');
+const session = require('express-session');
+const MySQLStore = require('express-mysql-session');
+
+const { database } = require('./keys');
 
 // Establecer nombre de la imagen 
 const storage = multer.diskStorage({
@@ -15,6 +21,7 @@ const storage = multer.diskStorage({
 
 // inicializacion
 const app = express();
+require('./lib/passport');
 
 // configuraciones
 app.set('port', process.env.PORT || 4000); //establecer puerto 4000
@@ -29,11 +36,20 @@ app.engine('.hbs', exphbs({
 app.set('view engine','.hbs');
 
 // Middlewares //
-
+app.use(session({
+    secret: 'topimysqlnodesession',
+    resave: false,
+    saveUninitialized: false,
+    store: new MySQLStore(database)
+}));
+app.use(flash());
 app.use(morgan('dev')); //para ver lo que está llegando al servidor
-app.use(express.urlencoded({extended: true})); //aceptar los datos por formulario //false: texto sencillo
+app.use(express.urlencoded({extended: false})); //aceptar los datos por formulario //false: texto sencillo
 app.use (express.json());
-    // Carga de imagen
+app.use(passport.initialize());
+app.use(passport.session());
+    
+// Carga de imagen
 app.use(multer({
     storage : storage,
     dest: path.join(__dirname, 'public/uploads')
@@ -41,6 +57,8 @@ app.use(multer({
 
 // Variables globales
 app.use((req,res,next) => {
+    app.locals.success = req.flash('success'); 
+    app.locals.user = req.user;
     next();
 });
 

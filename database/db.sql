@@ -16,6 +16,21 @@ ALTER TABLE users
 ALTER TABLE users
     MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
 
+ALTER TABLE users
+    ADD email VARCHAR(40) NOT NULL;
+
+ALTER TABLE users
+    MODIFY password VARCHAR(100) NOT NULL; 
+
+ALTER TABLE users
+    DROP email;
+
+ALTER TABLE users
+    DROP userlastname;
+
+ALTER TABLE users
+    ADD fullname VARCHAR(40) NOT NULL;
+
 DESCRIBE users;
 
 -- TABLA PRODUCTOS
