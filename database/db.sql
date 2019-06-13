@@ -59,3 +59,22 @@ ALTER TABLE products
     MODIFY foto VARCHAR(100);
     
 DESCRIBE products;
+
+--Tabla carrito
+CREATE TABLE cart (
+    id INT(11) NOT NULL,
+    sku INT(11) NOT NULL,
+    nombre VARCHAR(40) NOT NULL,
+    precio INT(5) NOT NULL,
+    cantidad INT(5) NOT NULL,
+    descripcion VARCHAR(100) NOT NULL,
+    foto VARCHAR(100) NOT NULL
+);
+
+ALTER TABLE cart
+    ADD PRIMARY KEY (id);
+
+ALTER TABLE cart
+    MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
+
+DESCRIBE cart;

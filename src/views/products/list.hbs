@@ -1,33 +1,41 @@
 <div class="container p-4">
     <div class="row">
         {{#each products}}
-            <div class="col-md-3">
+            <div class="col-md-3 p-2">
                 <div class="card text-center">
                     <div class="card-body">
-                        <img class="card-img-top" src="{{foto}}" alt="Img {{nombre}}">
-                        <a href="">
+                        <img class="card-img-top" src=".{{foto}}" alt="Img {{nombre}}">
+                        <a href="/products/description/{{id}}">
                             <h3 class="card-title text-uppercase">
                                 {{nombre}}
                             </h3>
                         </a>
+                        <!--
                         <p class="m-2">
                             {{categoria}}                            
                         </p>
+                        -->
+                        <!--
                         <p class="m-2">
                             {{sku}}
                         </p>
+                        -->
                         <p class="m-2">
-                            {{precio}}
+                            S/. {{precio}}
                         </p>
                         <p class="m-2">
-                            {{talla}}
+                            Talla: {{talla}}
                         </p>
+                        <!--
                         <p class="m-2">
                             {{cantidad}}
                         </p>
+                        -->
+                        <!--
                         <p class="m-2">
                             {{descripcion}}
                         </p>
+                        -->
                     </div>
                 </div>
             </div>

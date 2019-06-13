@@ -1,0 +1,38 @@
+<div class="container p-2">
+    <div class="row  bg-dark text-light text-center">
+        <div class="col-sm">
+            <h6>Imagen</h6>
+        </div>
+        <div class="col-sm">
+            <h6>Precio</h6>
+        </div>
+        <div class="col-sm">
+            <h6>Cantidad</h6>
+        </div>
+        <div class="col-sm">
+            <h6>Total</h6>
+        </div>
+        <div class="col-sm">
+            <h6>Eliminar</h6>
+        </div>
+    </div>
+    {{#each cart}}
+        <div class="row text-center p-2">
+        <div class="col-sm">
+            <img class="card-img-top" src="{{foto}}" alt="Img {{nombre}}">
+        </div>
+        <div class="col-sm my-auto">
+            S/.{{precio}}
+        </div>
+        <div class="col-sm my-auto">
+            {{cantidad}}
+        </div>
+        <div class="col-sm my-auto">
+            
+        </div>
+        <div class="col-sm my-auto">
+            <a href="/products/cart/delete/{{id}}" class="btn btn-danger">Ya no quiero</a>
+        </div>
+    </div>
+    {{/each}}
+</div>

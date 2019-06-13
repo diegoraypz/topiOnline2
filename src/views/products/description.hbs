@@ -1,0 +1,78 @@
+<!--
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <img src="{{products.foto}}" alt="{{products.nombre}}">
+        </div>
+        <div class="col-6">
+            <div>
+                <h5>{{products.nombre}}</h5>
+            </div>
+            <div>
+                <h9>S/.{{products.precio}}</h9>
+            </div>
+            <div>
+                <h9>SKU: {{products.sku}}</h9>
+            </div>
+            <div>
+                <h9>Cantidad </h9>
+                <input type="text">
+            </div>
+            <div style="margin: 10px">
+                <button type="button" class="btn btn-dark">Añadir al carrito</button>
+            </div>
+            <div class="row" style="border-style: solid; border-color: rgb(143, 139, 139); margin: 10px">
+                <pre> DETALLE
+                {{products.descripcion}}
+                </pre>
+            </div>
+        </div>
+
+    </div>
+</div>
+-->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class= "col-6">
+            <img src="{{products.foto}}" alt="{{products.nombre}}">
+        </div>  
+        <div class="col-md-4">
+            <div style="background: transparent">
+                <div style="background: transparent">
+                    <form action="/products/description/{{products.id}}" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="text" value="{{products.nombre}}" class="sinborde form-control" name="nombre" placeholder="nombre producto"  readonly="readonly" style="background: transparent">
+                        </div>                        
+                        <div class="form-group">
+                            <h9>SKU:</h9>
+                            <input type="text" value="{{products.sku}}" class="sinborde form-control" name="sku" placeholder="sku" readonly="readonly" style="background: transparent">
+                        </div>
+                        <div class="form-group">
+                            <h9>Precio S/. </h9>
+                            <input type="text" value="{{products.precio}}" class="sinborde form-control" name="precio" placeholder="precio"  readonly="readonly" style="background: transparent">
+                        </div>                        
+                        <div class="form-group">
+                            <h9>Cantidad: </h9>
+                            <input type="text" class="form-control" name="cantidad" placeholder="cantidad">
+                            <!--
+                                <input type="text" class="sinborde form-control" name="cantidad" placeholder="cantidad" value="15" readonly="readonly">
+                            -->
+                        </div>
+                        <div class="form-group">
+                            <textarea class="sinborde" name="descripcion" rows="2" class="form-control" placeholder="descripción"  readonly="readonly" style="background: transparent">{{products.descripcion}}</textarea>
+                        </div>                        
+                        <div class="form-group">
+                            <input type="text" name="foto" value="{{products.foto}}" class="sinborde"  readonly="readonly" style="background: transparent; visibility:hidden">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">
+                                Agregar al carrito
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
