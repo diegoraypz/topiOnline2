@@ -4,39 +4,35 @@
             <h6>Imagen</h6>
         </div>
         <div class="col-sm">
+            <h6>Nombre</h6>
+        </div>
+        <div class="col-sm">
+            <h6>Descripción</h6>
+        </div>
+        <div class="col-sm">
             <h6>Precio</h6>
-        </div>
-        <div class="col-sm">
-            <h6>Cantidad</h6>
-        </div>
-        <div class="col-sm">
-            <h6>Total</h6>
         </div>
         <div class="col-sm">
             <h6>Eliminar</h6>
         </div>
     </div>
-    {{#each cart}}
+    {{#each products}}
         <div class="row text-center p-2">
         <div class="col-sm">
             <img class="card-img-top" src="{{foto}}" alt="Img {{nombre}}">
         </div>
         <div class="col-sm my-auto">
+            {{nombre}}
+        </div>
+        <div class="col-sm my-auto">
+            {{descripcion}}
+        </div>
+        <div class="col-sm my-auto">
             S/.{{precio}}
         </div>
         <div class="col-sm my-auto">
-            {{cantidad}}
-        </div>
-        <div class="col-sm my-auto">
-            
-        </div>
-        <div class="col-sm my-auto">
-            <a href="/products/cart/delete/{{id}}" class="btn btn-danger">Ya no lo quiero</a>
+            <a href="/products/delete/{{id}}" class="btn btn-danger">Chau</a>
         </div>
     </div>
     {{/each}}    
-    <div class="d-flex flex-row-reverse p-4">
-        <a href="/confirmar" class="btn btn-success">Confirmar</a>
-    </div>
 </div>
-

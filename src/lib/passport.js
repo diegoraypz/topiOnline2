@@ -53,3 +53,58 @@ passport.deserializeUser(async (id, done) => {
     const rows = await pool.query('SELECT * FROM users Where id = ?', [id]);
     done(null, rows[0]);
 });
+
+
+
+/************************/
+/*        ADMIN         */
+/************************/
+
+passport.use('local.signinadmin', new LocalStrategy({
+    usernameField: 'username',
+    passwordField: 'password',
+    passReqToCallback: true
+}, async(req, username, password, done) => {
+    const rows = await pool.query('SELECT * FROM admins WHERE username = ?', [username]);
+    if (rows.length > 0){
+        const user = rows[0];
+        const validPassword = await helpers.matchPassword(password, user.password);
+        if (validPassword) {
+            done(null, user, req.flash('sucess', 'Bienvenido ' + user.username));
+        } else {
+            done(null, false, req.flash('message', 'Contraseña incorrecta'));
+        }
+    } else {
+        return done(null, false, req.flash('message', 'El administrador no existe'));
+    }
+}));
+
+passport.use('local.signupadmin', new LocalStrategy({
+    usernameField: 'username',
+    passwordField: 'password',
+    passReqToCallback: true
+}, async(req, username, password, done) => {
+    console.log(req.body)
+    console.log(username)
+    console.log(password)
+    const { fullname } = req.body;
+    const newAdmin = {
+        username, //=useremail: useremail,
+        password,
+        fullname
+    };
+    newAdmin.password = await helpers.encryptPassword(password);
+
+    const result = await pool.query('INSERT INTO admins SET ?', [newAdmin]);
+    newAdmin.id = result.insertId;
+    return done(null, newAdmin);
+}))
+
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+    const rows = await pool.query('SELECT * FROM admins Where id = ?', [id]);
+    done(null, rows[0]);
+});

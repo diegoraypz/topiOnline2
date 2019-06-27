@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router();
+const { isLoggedIn, isNotLoggedIn, isAdminLoggedIn, isAdminNotLoggedIn } = require('../lib/auth');
 
 const pool = require('../database');
 
-router.get('/add', (req, res) => {
+router.get('/add', isAdminLoggedIn, (req, res) => {
     res.render('products/add');
 });
 
@@ -70,4 +71,16 @@ router.get('/cart/delete/:id', async (req, res) => {
     res.redirect('/products/cart');
 });
 
+
+router.get('/delete', isAdminLoggedIn, async (req, res) =>{
+    const products= await pool.query('SELECT * FROM products');
+    console.log(products)
+    res.render('products/delete', {products: products});
+});
+
+router.get('/delete/:id', async (req, res) => {
+    const { id } = req.params;
+    await pool.query('DELETE FROM products WHERE ID = ?', [id]);
+    res.redirect('/products/delete');
+});
 module.exports = router;

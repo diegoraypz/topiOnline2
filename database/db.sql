@@ -78,3 +78,21 @@ ALTER TABLE cart
     MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
 
 DESCRIBE cart;
+
+-- TABLA ADMIN
+CREATE TABLE admins(
+    id INT(11) NOT NULL,
+    username VARCHAR(40) NOT NULL,
+    fullname VARCHAR(40) NOT NULL,
+    password VARCHAR(100) NOT NULL
+);
+
+ALTER TABLE admins
+    ADD PRIMARY KEY (id);
+
+ALTER TABLE admins
+    MODIFY id INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 2;
+
+DESCRIBE admins;
+
+INSERT INTO admins (id, username, password, fullname) VALUES (1, "admin@topi.com", "admin","Admin");
