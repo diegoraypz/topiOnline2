@@ -24,7 +24,7 @@ const app = express();
 require('./lib/passport');
 
 // configuraciones
-app.set('port', process.env.PORT || 4000); //establecer puerto 4000
+//app.set('port', process.env.PORT || 4000); //establecer puerto 4000
 app.set('views', path.join(__dirname, 'views')); //establecer a ubicación de la carpeta views
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
@@ -74,7 +74,11 @@ app.use('/products',require('./routes/products'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Iniciar el servidor
-app.listen(app.get('port'), ()=>{
+/*app.listen(app.get('port'), ()=>{
     console.log('Servidor en puerto ', app.get('port'))
+});*/
+let puerto = process.env.PORT || 4000;
+app.listen(puerto, ()=>{
+    console.log('Servidor en puerto ', app.get('puerto'))
 });
 
