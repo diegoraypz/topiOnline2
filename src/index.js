@@ -78,7 +78,6 @@ app.use(express.static(path.join(__dirname, 'public')));
     console.log('Servidor en puerto ', app.get('port'))
 });*/
 const puerto = process.env.PORT || 8080;
-app.listen(puerto, ()=>{
-    console.log("Servidor en puerto " + puerto);
-});
+app.listen(puerto);
+console.log("1 2 probando")
 
