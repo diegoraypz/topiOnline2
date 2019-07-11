@@ -21,10 +21,9 @@ const storage = multer.diskStorage({
 
 // inicializacion
 const app = express();
-//require('./lib/passport');
+require('./lib/passport');
 
 // configuraciones
-//app.set('port', process.env.PORT || 4000); //establecer puerto 4000
 app.set('views', path.join(__dirname, 'views')); //establecer a ubicación de la carpeta views
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
