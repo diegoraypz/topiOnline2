@@ -1,6 +1,6 @@
 //Arranca la aplicación
 const express = require('express');
-const morgan = require('morgan');
+/*const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const multer = require('multer');
@@ -9,7 +9,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session');
 
-const { database } = require('./keys');
+const { database } = require('./keys');*/
 
 // Establecer nombre de la imagen 
 /*const storage = multer.diskStorage({
