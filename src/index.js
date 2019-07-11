@@ -1,6 +1,6 @@
 //Arranca la aplicación
 const express = require('express');
-/*const morgan = require('morgan');
+const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const multer = require('multer');
@@ -9,20 +9,20 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session');
 
-const { database } = require('./keys');*/
+const { database } = require('./keys');
 
 // Establecer nombre de la imagen 
-/*const storage = multer.diskStorage({
+const storage = multer.diskStorage({
     destination: path.join(__dirname, 'public/uploads'),
     filename: (req, file, cb) => {
         cb(null, file.originalname);
     }
-})*/
+})
 
 // inicializacion
 const app = express();
 //require('./lib/passport');
-/*
+
 // configuraciones
 //app.set('port', process.env.PORT || 4000); //establecer puerto 4000
 app.set('views', path.join(__dirname, 'views')); //establecer a ubicación de la carpeta views
@@ -74,9 +74,9 @@ app.use('/products',require('./routes/products'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Iniciar el servidor
-/*app.listen(app.get('port'), ()=>{
+app.listen(app.get('port'), ()=>{
     console.log('Servidor en puerto ', app.get('port'))
-});*/
+});
 const puerto = process.env.PORT || 8080;
 app.listen(puerto);
 console.log("1 2 probando")
