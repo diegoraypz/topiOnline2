@@ -74,10 +74,12 @@ app.use('/products',require('./routes/products'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Iniciar el servidor
-app.listen(app.get('port'), ()=>{
+/*app.listen(app.get('port'), ()=>{
     console.log('Servidor en puerto ', app.get('port'))
-});
+});*/
 const puerto = process.env.PORT || 8080;
-app.listen(puerto);
-console.log("1 2 probando")
+app.listen(puerto, ()=>{
+    console.log("Servidor en puerto " + puerto)
+});
+console.log("1 2 3 probando...")
 
