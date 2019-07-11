@@ -17,12 +17,12 @@ const { database } = require('./keys');
     filename: (req, file, cb) => {
         cb(null, file.originalname);
     }
-})
+})*/
 
 // inicializacion
 const app = express();
-require('./lib/passport');
-
+//require('./lib/passport');
+/*
 // configuraciones
 //app.set('port', process.env.PORT || 4000); //establecer puerto 4000
 app.set('views', path.join(__dirname, 'views')); //establecer a ubicación de la carpeta views
