@@ -12,7 +12,7 @@ const MySQLStore = require('express-mysql-session');
 const { database } = require('./keys');
 
 // Establecer nombre de la imagen 
-const storage = multer.diskStorage({
+/*const storage = multer.diskStorage({
     destination: path.join(__dirname, 'public/uploads'),
     filename: (req, file, cb) => {
         cb(null, file.originalname);
