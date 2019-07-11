@@ -77,7 +77,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 /*app.listen(app.get('port'), ()=>{
     console.log('Servidor en puerto ', app.get('port'))
 });*/
-const puerto = process.env.PORT || 5000;
+const puerto = process.env.PORT || 8080;
 app.listen(puerto, ()=>{
     console.log("Servidor en puerto " + puerto);
 });
